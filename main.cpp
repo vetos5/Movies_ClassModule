@@ -6,6 +6,7 @@ const int MAX = 100;
 void sortByGenre(Movie movies[], int count);
 void sortByTitle(Movie movies[], int count);
 void sortByDuration(Movie movies[], int count);
+void findByName(Movie movies[], int count, string title);
 
 int main() {
 	string path;
@@ -40,24 +41,37 @@ int main() {
 	
 	do {	
 		
-		cout << "Input num (1 - sort by genre, 2 - sort by title, 3 - sort by duration)" << endl;
+		cout << "Input num (1 - sort by genre, 2 - sort by title, 3 - sort by duration, 4 - search by name )" << endl;
 		cin >> num;
 	switch (num)
 	{
 	case 1:
 		sortByGenre(movies, count);
+		for (int i = 0; i < count; i++) {
+			cout << movies[i] << endl;
+		}
 		break;
-	case2:
+	case 2:
 		sortByTitle(movies, count);
+		for (int i = 0; i < count; i++) {
+			cout << movies[i] << endl;
+		}
 		break;
-	case3:
+	case 3:
 		sortByDuration(movies, count);
+		for (int i = 0; i < count; i++) {
+			cout << movies[i] << endl;
+		}
+		break;
+	case 4:
+		string title;
+		cout << "Input title" << endl;
+		cin >> title;
+		findByName(movies, count, title);
 		break;
 	}
 
-	for (int i = 0; i < count; i++) {
-		cout << movies[i] << endl;
-	}
+	
 	cout << "Input num (1 - continue investigation, 2 - exit)";
 	cin >> num_while;
 	} while (num_while == 1);
@@ -104,6 +118,17 @@ void sortByDuration(Movie movies[], int count)
 			{
 				swap(movies[j], movies[j + 1]);
 			}
+		}
+	}
+}
+
+void findByName(Movie movies[], int count, string title)
+{
+	for (int i = 0; i < count; i++)
+	{
+		if (movies[i].getTitle() == title)
+		{
+			cout << movies[i] << endl;
 		}
 	}
 }
