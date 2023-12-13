@@ -28,6 +28,6 @@ public:
 	friend ostream& operator<<(ostream& os, const Movie& movie);
 	friend istream& operator>>(istream& is, Movie& movie);
 
-	/*void filterByDuration(int duration);*/
+	
 
 };
